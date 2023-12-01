@@ -1,0 +1,7 @@
+**/CodePulse.API/.vs/
+**/CodePulse.API/CodePulse.API/bin/
+**/CodePulse.API/CodePulse.API/obj/
+**/CodePulse.API/CodePulse.API/*.csproj.user
+**/UI/codepulse/.vscode
+**/UI/codepulse/node_modules/
+**/UI/codepulse/.angular/
