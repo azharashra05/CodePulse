@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CodePulse.API.Controllers
 {
-    //https://localhost:xxx/api/categories
+    //https://localhost:7226/api/categories
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase
@@ -57,6 +57,26 @@ namespace CodePulse.API.Controllers
                     UrlHandle = category.UrlHandle
                 });
             }
+
+            return Ok(response);
+        }
+        //https://localhost:7226/api/categories/{id}
+        [HttpGet]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> GetCategoryById([FromRoute] Guid id)
+        {
+            var existingCategory=await categoryRepository.GetByIdAsync(id);
+            if(existingCategory is null)
+            {
+                return NotFound();
+            }
+
+            var response = new CategoryDto
+            {
+                Id = existingCategory.Id,
+                Name = existingCategory.Name,
+                UrlHandle = existingCategory.UrlHandle
+            };
 
             return Ok(response);
         }
